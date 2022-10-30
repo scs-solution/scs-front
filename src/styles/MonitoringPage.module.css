@@ -1,0 +1,96 @@
+/*header*/
+
+.header {
+    position: fixed; /*스크롤 내려도 고정*/ 
+    left: 0;
+    top : 0;
+    width: 100%;
+    height: 80px;
+    background-color: red;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.headerContents {
+    display: flex; /*로고부터 메뉴바까지의 길이 조정 및 좌우 밀착*/
+    width: 96%;
+    max-width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*layout*/
+
+.layout {
+  padding-top: 80px; /*레이아웃에서 헤더와 같은 패딩을 줘서 겹치는것 방지*/
+}
+.main {
+  min-height: calc(100vh - 180px); /*높이가 짧아도 footer가 최하단에 위치하도록*/
+
+}
+.mainContentsLeft {
+  position: absolute;
+  left: 0;
+  /*display: inline-block; /* == float: left */
+  width: 65%;
+  height: 1115px;
+  margin: 0 auto;
+  border-right: solid black 1px;
+}
+.mainContentsLeft1 {
+  display: block; /* == float: left */
+  width: 100%;
+  height: 780px;
+  margin: 0 auto;
+}
+.mainContentsLeft2 {
+  display: block;
+  width: 100%;
+  height: 335px;
+  margin: 0 auto;
+}
+.mainContentsRight {
+  position: absolute;
+  right: 0;
+  width: 34%;
+  height: 1115px;
+  margin: 0 auto;
+}
+.mainContentsRight1 {
+  display: block;
+  width: 100%;
+  height: 50%;
+  margin: 0 auto;
+}
+.mainContentsRight2 {
+  display: block;
+  width: 100%;
+  height: 50%;
+  margin: 0 auto;
+}
+
+
+/*footer*/
+
+.footer {
+  height: 100px;
+  margin-top: auto;
+  background-color: #dde0ea;
+}
+
+.footerContents {
+  width: 96%;
+  max-width: 1100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.footerTitle {
+  font-weight: 600;
+  font-size: 20px;
+}
