@@ -24,8 +24,7 @@ function LoginPage() {
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    const regex =
-      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+    const regex = /^\w{4,20}$/;
     if (regex.test(e.target.value)) {
       setEmailValid(true);
     } else {
@@ -35,8 +34,7 @@ function LoginPage() {
 
   const handlePw = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPw(e.target.value);
-    const regex =
-      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{6,64}$/;
     if (regex.test(e.target.value)) {
       setPwValid(true);
     } else {
