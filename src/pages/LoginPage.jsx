@@ -56,7 +56,7 @@ function LoginPage() {
     return (
       <div className= {styled.page}>
         <div className={styled.titleWrap}>
-          이메일과 비밀번호를
+          아이디와 비밀번호를
           <br />
           입력해주세요
         </div>
