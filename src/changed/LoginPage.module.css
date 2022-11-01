@@ -49,10 +49,10 @@ color: #262626;
 .input {
   width: 100%;
   outline: none;
-border: none;
+  border: none;
   height: 17px;
   font-size: 14px;
-font-weight: 400;
+  font-weight: 400;
 }
 
 .input::placeholder {

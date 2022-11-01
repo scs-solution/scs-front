@@ -1,15 +1,20 @@
+import React from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Main from "../components/Main";
-import styler from "../styles/MonitoringPage.module.css";
+import styled from "styled-components";
 
-const MonitoringPage = (props: any) => {
+const Layout = styled.div`
+  padding-top: 80px;
+  padding-bottom: 80px;
+`;
+
+const MonitoringPage = () => {
   return (
-    <div className={styler.layout}>
+    <Layout>
       <Header />
       <Main></Main>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
