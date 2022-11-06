@@ -1,9 +1,11 @@
-import React from 'react';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React from "react";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 function InsertNodeButton() {
-  /*const handleSelect = (e) => alert(`selected ${eventKey}`);
+
+  const handleSelect = (eventKey: any) => alert(`selected ${eventKey}`);
+
   return (
     <Nav variant="pills" activeKey="1" onSelect={handleSelect}>
       <NavDropdown title="Dropdown" id="nav-dropdown">
@@ -14,7 +16,7 @@ function InsertNodeButton() {
         <NavDropdown.Item eventKey="4.3">Database</NavDropdown.Item>
       </NavDropdown>
     </Nav>
-  );*/
+  );
 }
 
 export default InsertNodeButton;
