@@ -35,10 +35,6 @@ const Header = () => {
       <HeaderContents>
         <LogoWrap>로고</LogoWrap>
         <NavStyle>
-          <ul>
-            <li>메뉴 1</li>
-            <li>메뉴 2</li>
-          </ul>
         </NavStyle>
       </HeaderContents>
     </HeaderStyle>

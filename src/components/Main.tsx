@@ -7,10 +7,11 @@ const Body = styled.body`
 `;
 const MainContentLeft = styled.div`
   position: absolute;
+  display: flex;
   left: 0;
   /*display: inline-block; /* == float: left */
   width: 65%;
-  /*height: 1115px;*/
+  height: 1115px;
   margin: 0 auto;
   /*border-right: solid black 1px;*/
   border-radius: 64px 64px 64px 64px;
@@ -18,21 +19,21 @@ const MainContentLeft = styled.div`
 const DiagramWrap1 = styled.div`
   display: block; /* == float: left */
   width: 100%;
-  /*height: 30%;*/
+  height: 30%;
   margin: 0 auto;
   overflow: auto;
 `;
 const DiagramWrap2 = styled.div`
   display: block;
   width: 100%;
-  /*height: 20%;*/
+  height: 20%;
   margin: 0 auto;
 `;
 const MainContentRight = styled.div`
   position: absolute;
   right: 0;
   width: 34%;
-  /*height: 1115px;*/
+  height: 1115px;
   margin: 0 auto;
   border-radius: 64px 64px 64px 64px;
 
