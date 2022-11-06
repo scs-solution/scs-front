@@ -5,6 +5,7 @@ import styled from "styled-components";
 const Body = styled.body`
   min-height: calc(100vh - 180px);
 `;
+
 const MainContentLeft = styled.div`
   position: absolute;
   left: 0;
@@ -15,6 +16,7 @@ const MainContentLeft = styled.div`
   /*border-right: solid black 1px;*/
   border-radius: 64px 64px 64px 64px;
 `;
+
 const DiagramWrap1 = styled.div`
   display: block; /* == float: left */
   width: 100%;
@@ -22,12 +24,14 @@ const DiagramWrap1 = styled.div`
   margin: 0 auto;
   overflow: auto;
 `;
+
 const DiagramWrap2 = styled.div`
   display: block;
   width: 100%;
   /*height: 20%;*/
   margin: 0 auto;
 `;
+
 const MainContentRight = styled.div`
   position: absolute;
   right: 0;
@@ -35,14 +39,15 @@ const MainContentRight = styled.div`
   /*height: 1115px;*/
   margin: 0 auto;
   border-radius: 64px 64px 64px 64px;
-
 `;
+
 const MetricWrap1 = styled.div`
   display: block;
   width: 100%;
   height: 50%;
   margin: 0 auto;
 `;
+
 const MetricWrap2 = styled.div`
   display: block;
   width: 100%;
