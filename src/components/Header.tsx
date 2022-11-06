@@ -2,13 +2,16 @@
 import React from "react";
 import Dropdown from "react-bootstrap/esm/Dropdown";
 import styled from "styled-components";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import InsertNodeButton from "./InsertNodeButton";
 
 const HeaderStyle = styled.header`
   position: fixed; /*스크롤 내려도 고정*/
   left: 0;
   top: 0;
   width: 100%;
-  height: 80px;
+  height: 60px;
   background-color: #f7f7f7;
   //border-radius: 0 0 64px 64px;
   z-index: 1;
@@ -26,15 +29,46 @@ const HeaderContents = styled.div`
 
 const NavStyle = styled.nav``;
 const LogoWrap = styled.div`
-  display: inline-block;
+  /* display: inline-block; */
+  /* rela */
+  display: flex;
 `;
 
+const LogoImage = styled.img`
+  /* object-fit: contain; */
+
+  /* overflow: hidden;
+  position: relative;
+  width: 100%; */
+
+  /* width: 100%; */
+
+  /* height: 100%; */
+  align-items: center;
+`;
+// <HeaderStyle>
+//   <HeaderContents>
+{
+  /* <LogoWrap>
+          <LogoImage src="/logo.png"></LogoImage>
+        </LogoWrap> */
+}
 const Header = () => {
   return (
-    <HeaderStyle>
-      <HeaderContents>
-        <LogoWrap>로고</LogoWrap>
-        <NavStyle>
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#home">
+          <img
+            alt=""
+            src="/logo.png"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{" "}
+          React Bootstrap
+        </Navbar.Brand>
+        <InsertNodeButton />
+        {/* <NavStyle>
           <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
               Dropdown Button
@@ -46,9 +80,11 @@ const Header = () => {
               <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        </NavStyle>
-      </HeaderContents>
-    </HeaderStyle>
+        </NavStyle> */}
+      </Container>
+    </Navbar>
+    //   </HeaderContents>
+    // </HeaderStyle>
   );
 };
 //・표시 안보기 위해 ul에 li 넣음
