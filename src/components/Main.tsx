@@ -1,7 +1,7 @@
 //import styler from "../styles/MonitoringPage.module.css";
 import React from "react";
 import styled from "styled-components";
-import { Accordion, Badge } from "react-bootstrap";
+import { Accordion, Badge, Button, Carousel } from "react-bootstrap";
 
 const Body = styled.body`
   min-height: calc(100vh - 180px);
@@ -30,7 +30,7 @@ const DiagramWrap1 = styled.div`
 const DiagramWrap2 = styled.div`
   display: block;
   width: 100%;
-  height: 400px;
+  height: 350px;
   margin: 0 auto;
   background-color: #f7f7f7;
 `;
@@ -47,7 +47,7 @@ const MainContentRight = styled.div`
 const MetricWrap1 = styled.div`
   display: block;
   width: 100%;
-  height: 1100px;
+  height: 1080px;
   margin: 0 auto;
   background-color: #f7f7f7;
 `;
@@ -55,7 +55,7 @@ const MetricWrap1 = styled.div`
 const MetricWrap2 = styled.div`
   display: block;
   width: 100%;
-  height: 1100px;
+  height: 1080px;
   margin: 0 auto;
   background-color: #f7f7f7;
 `;
@@ -70,7 +70,9 @@ function Main() {
               <Badge pill bg = "primary">Diagram 1</Badge>{' '}
             </Accordion.Header>
             <Accordion.Body>
-              <DiagramWrap1></DiagramWrap1>
+              <DiagramWrap1>
+                <Button variant="light" style={{}}>edit</Button>
+              </DiagramWrap1>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
