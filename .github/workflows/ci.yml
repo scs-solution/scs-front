@@ -1,0 +1,34 @@
+name: deploy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu
+
+    env:
+      CI: false
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install modules
+        run: npm install
+      - name: Run test codes
+        run: npm run test
+      - name: Build project
+        run: npm run build
+      - name: Deploy build outputs
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PEM_KEY }}
+          port: ${{ secrets.PORT }}
+          source: "build/*"
+          strip_components: 1
+          target: "/usr/share/nginx/html"
