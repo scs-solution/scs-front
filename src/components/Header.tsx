@@ -7,11 +7,11 @@ import InsertNodeButton from "./InsertNodeButton";
 const Header = () => {
   return (
     <Navbar bg="dark" variant="dark">
-      <Container>
+      <Container style={{flexDirection: 'row', alignItems: 'stretch', width: '100%', margin: '0 auto'}}>
         <Navbar.Brand href="#home">
           <img
             alt=""
-            src="/logo.png"
+            src="/img/SCloudOnly.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
