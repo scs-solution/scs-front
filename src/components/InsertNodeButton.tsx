@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/esm/Button";
 import Modal from "react-bootstrap/esm/Modal";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-function MyVerticallyCenteredModal(props: any) {
+function NewFrontendInstanceModal(props: any) {
+  const createInstance = async () => {
+    props.onHide();
+  };
+
   return (
     <Modal
       {...props}
@@ -14,7 +18,7 @@ function MyVerticallyCenteredModal(props: any) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          Create Frontend Instance
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -26,32 +30,36 @@ function MyVerticallyCenteredModal(props: any) {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={createInstance}>Create</Button>
       </Modal.Footer>
     </Modal>
   );
 }
 
 function InsertNodeButton() {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalFrontendShow, setModalFrontendShow] = React.useState(false);
 
   const handleSelect = (eventKey: any) => {
-    setModalShow(true);
+    switch (eventKey) {
+      case "front":
+        setModalFrontendShow(true);
+        break;
+    }
   };
 
   return (
     <Nav variant="pills" activeKey="1" onSelect={handleSelect}>
       <NavDropdown title="New Instance" id="nav-dropdown">
-        <NavDropdown.Item eventKey="4.1">Frontend</NavDropdown.Item>
+        <NavDropdown.Item eventKey="front">Frontend</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item eventKey="4.2">Backend</NavDropdown.Item>
+        <NavDropdown.Item eventKey="backend">Backend</NavDropdown.Item>
         <NavDropdown.Divider />
-        <NavDropdown.Item eventKey="4.3">Database</NavDropdown.Item>
+        <NavDropdown.Item eventKey="database">Database</NavDropdown.Item>
       </NavDropdown>
 
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
+      <NewFrontendInstanceModal
+        show={modalFrontendShow}
+        onHide={() => setModalFrontendShow(false)}
       />
     </Nav>
   );
