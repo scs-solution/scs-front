@@ -2,8 +2,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Accordion, Badge, Button, Carousel } from "react-bootstrap";
+import DiagramPannel from "./diagram/DiagramPannel";
 
-const Body = styled.body`
+const Body = styled.div`
   min-height: calc(100vh - 180px);
 `;
 
@@ -64,20 +65,24 @@ function Main() {
   return (
     <Body>
       <MainContentLeft>
-        <Accordion defaultActiveKey={['0', '1']} alwaysOpen>
+        <Accordion defaultActiveKey={["0", "1"]} alwaysOpen>
           <Accordion.Item eventKey="0">
             <Accordion.Header>
-              <Badge pill bg = "primary">Diagram 1</Badge>{' '}
+              <Badge pill bg="primary">
+                Diagram 1
+              </Badge>{" "}
             </Accordion.Header>
             <Accordion.Body>
               <DiagramWrap1>
-                <Button variant="light" style={{}}>edit</Button>
+                <DiagramPannel />
               </DiagramWrap1>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
             <Accordion.Header>
-              <Badge pill bg = "primary">Diagram 2</Badge>{' '}
+              <Badge pill bg="primary">
+                Diagram 2
+              </Badge>{" "}
             </Accordion.Header>
             <Accordion.Body>
               <DiagramWrap2></DiagramWrap2>
@@ -85,26 +90,30 @@ function Main() {
           </Accordion.Item>
         </Accordion>
       </MainContentLeft>
-      
+
       <MainContentRight>
         <Accordion defaultActiveKey="0">
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>
-                <Badge pill bg = "secondary">Metric 1</Badge>{' '}
-              </Accordion.Header>
-              <Accordion.Body>
-                <MetricWrap1></MetricWrap1>
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>
-                <Badge pill bg = "secondary">Metric 2</Badge>{' '}
-              </Accordion.Header>
-              <Accordion.Body>
-                <MetricWrap2></MetricWrap2>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>
+              <Badge pill bg="secondary">
+                Metric 1
+              </Badge>{" "}
+            </Accordion.Header>
+            <Accordion.Body>
+              <MetricWrap1></MetricWrap1>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>
+              <Badge pill bg="secondary">
+                Metric 2
+              </Badge>{" "}
+            </Accordion.Header>
+            <Accordion.Body>
+              <MetricWrap2></MetricWrap2>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </MainContentRight>
     </Body>
   );
