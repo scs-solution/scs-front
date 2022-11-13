@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import Chart from "react-google-charts";
 
 export const data = [
@@ -16,6 +17,16 @@ export const options = {
 };
 
 export default function MetricChart() {
+  useEffect(() => {
+    const pull = setInterval(async () => {
+      const metric = await axios.post(
+        "http://www.rollrat.com:8080/api/v1.0/containers/"
+      );
+      console.log(metric);
+    }, 1000);
+    return () => clearInterval(pull);
+  });
+
   return (
     <Chart
       chartType="LineChart"
