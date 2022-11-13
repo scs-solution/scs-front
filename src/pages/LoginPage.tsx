@@ -11,27 +11,31 @@ const Page = styled.div`
   padding: 0 20px;
   left: 50%;
   transform: translate(-50%, 0);
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 `;
+
 const TitleWrap = styled.div`
   margin-top: 87px;
   font-size: 26px;
   font-weight: bold;
   color: #262626;
 `;
-const LoginForm = styled.form `
+
+const LoginForm = styled.form`
   margin-top: 26px;
   flex: 1;
 `;
-const InputTitle = styled.div `
+
+const InputTitle = styled.div`
   font-size: 12px;
   font-weight: 600;
   color: #262626;
 `;
-const InputWrap = styled.div `
+
+const InputWrap = styled.div`
   display: flex;
   border-radius: 8px;
   padding: 16px;
@@ -42,6 +46,7 @@ const InputWrap = styled.div `
     border: 1px solid #9e30f4;
   }
 `;
+
 const Input = styled.input.attrs({ placeholderTextColor: "#dadada" })`
   width: 100%;
   outline: none;
@@ -50,7 +55,8 @@ const Input = styled.input.attrs({ placeholderTextColor: "#dadada" })`
   font-size: 14px;
   font-weight: 400;
 `;
-const BottomButton = styled.input `
+
+const BottomButton = styled.input`
   width: 100%;
   height: 48px;
   border: none;
@@ -65,7 +71,8 @@ const BottomButton = styled.input `
     color: white;
   }
 `;
-const ErrorMessageWrap = styled.div `
+
+const ErrorMessageWrap = styled.div`
   margin-top: 8px;
   color: #ef0000;
   font-size: 12px;
@@ -116,9 +123,8 @@ function LoginPage() {
       </TitleWrap>
 
       <LoginForm method="post" action="http://15.165.233.242:3000/api/v1/auth">
-        
         <InputTitle>아이디</InputTitle>
-        
+
         <InputWrap>
           <Input
             type="text"
@@ -135,9 +141,7 @@ function LoginPage() {
           )}
         </ErrorMessageWrap>
 
-        <InputTitle style={{ marginTop: "26px" }}>
-          비밀번호
-        </InputTitle>
+        <InputTitle style={{ marginTop: "26px" }}>비밀번호</InputTitle>
 
         <InputWrap>
           <Input
@@ -151,17 +155,18 @@ function LoginPage() {
 
         <ErrorMessageWrap>
           {!pwValid && pw.length > 0 && (
-            <div>올바른 패스워드를 입력해주세요. 특수문자 '?'는 제외입니다.</div>
+            <div>
+              올바른 패스워드를 입력해주세요. 특수문자 '?'는 제외입니다.
+            </div>
           )}
         </ErrorMessageWrap>
 
         <BottomButton
           type="submit"
           // onClick={onClickConfirmButton}
-          disabled={notAllow} 
+          disabled={notAllow}
           value="로그인"
         />
-
       </LoginForm>
     </Page>
   );

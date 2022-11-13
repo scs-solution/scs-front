@@ -1,8 +1,8 @@
-//import styler from "../styles/MonitoringPage.module.css";
 import React from "react";
 import styled from "styled-components";
-import { Accordion, Badge, Button, Carousel } from "react-bootstrap";
+import { Accordion, Badge } from "react-bootstrap";
 import DiagramPannel from "./diagram/DiagramPannel";
+import MetricChart from "./chart/MetricChart";
 
 const Body = styled.div`
   min-height: calc(100vh - 180px);
@@ -48,7 +48,7 @@ const MainContentRight = styled.div`
 const MetricWrap1 = styled.div`
   display: block;
   width: 100%;
-  height: 1080px;
+  /* height: 1080px; */
   margin: 0 auto;
   background-color: #f7f7f7;
 `;
@@ -96,11 +96,13 @@ function Main() {
           <Accordion.Item eventKey="0">
             <Accordion.Header>
               <Badge pill bg="secondary">
-                Metric 1
-              </Badge>{" "}
+                CPU RAM Metric
+              </Badge>
             </Accordion.Header>
             <Accordion.Body>
-              <MetricWrap1></MetricWrap1>
+              <MetricWrap1>
+                <MetricChart />
+              </MetricWrap1>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
