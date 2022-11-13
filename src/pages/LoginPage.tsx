@@ -122,7 +122,7 @@ function LoginPage() {
         입력해주세요
       </TitleWrap>
 
-      <LoginForm method="post" action="http://15.165.233.242:3000/api/v1/auth">
+      <LoginForm method="post" action="/api/v1/auth">
         <InputTitle>아이디</InputTitle>
 
         <InputWrap>
