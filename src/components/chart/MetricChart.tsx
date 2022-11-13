@@ -19,9 +19,7 @@ export const options = {
 export default function MetricChart() {
   useEffect(() => {
     const pull = setInterval(async () => {
-      const metric = await axios.post(
-        "http://www.rollrat.com:8080/api/v1.0/containers/"
-      );
+      const metric = await axios.post("/monitor/containers");
       console.log(metric);
     }, 1000);
     return () => clearInterval(pull);
