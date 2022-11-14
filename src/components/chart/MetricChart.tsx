@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import Chart from "react-google-charts";
+import { getScsContextInstance } from "../../context/ScsContext";
 
 export const data = [
   ["Year", "Sales", "Expenses"],
@@ -19,7 +20,9 @@ export const options = {
 export default function MetricChart() {
   useEffect(() => {
     const pull = setInterval(async () => {
-      const metric = await axios.post("/monitor/containers");
+      const metric = await axios.post("http://www.rollrat.com/api/v1/monitor", {
+        infraName: getScsContextInstance().infraName,
+      });
       console.log(metric);
     }, 1000);
     return () => clearInterval(pull);
