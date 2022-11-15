@@ -1,5 +1,8 @@
+import { InfraDescription } from "../dtos/infra-desc.dtos";
+
 export class ScsContext {
   private _infraName: string;
+  private _desc: InfraDescription;
 
   set infraName(name: string) {
     this._infraName = name;
@@ -7,6 +10,14 @@ export class ScsContext {
 
   get infraName(): string {
     return this._infraName;
+  }
+
+  set infraDesc(desc: InfraDescription) {
+    this._desc = desc;
+  }
+
+  get infraDesc(): InfraDescription {
+    return this._desc;
   }
 }
 

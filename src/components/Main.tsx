@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Accordion, Badge } from "react-bootstrap";
 import DiagramPannel from "./diagram/DiagramPannel";
 import MetricChart from "./chart/MetricChart";
+import axios from "axios";
+import { getScsContextInstance } from "../context/ScsContext";
 
 const Body = styled.div`
   min-height: calc(100vh - 180px);
@@ -62,6 +64,26 @@ const MetricWrap2 = styled.div`
 `;
 
 function Main() {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    async function get() {
+      const infraInfo = await axios.post(
+        `http://www.rollrat.com/api/v1/infra/defail/${
+          getScsContextInstance().infraName
+        }`
+      );
+
+      getScsContextInstance().infraDesc = infraInfo.data;
+      setLoaded(true);
+    }
+    get();
+  });
+
+  if (!loaded) {
+    return <></>;
+  }
+
   return (
     <Body>
       <MainContentLeft>
