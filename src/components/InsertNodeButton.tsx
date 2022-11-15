@@ -39,6 +39,10 @@ function NewFrontendInstanceModal(props: any) {
 }
 
 function SSHModal(props: any) {
+  const close = async () => {
+    props.onHide();
+  };
+
   return (
     <Modal
       {...props}
@@ -51,6 +55,10 @@ function SSHModal(props: any) {
       </Modal.Header>
 
       <SSHPage instance={getScsContextInstance().infraDesc.instances![0]} />
+
+      <Modal.Footer>
+        <Button onClick={close}>Close</Button>
+      </Modal.Footer>
     </Modal>
   );
 }

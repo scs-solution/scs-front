@@ -5,12 +5,12 @@ import { InfraInstance } from "../dtos/infra-desc.dtos";
 
 const SSHPannel = styled.div`
   width: 100%;
-  height: 100%;
+  height: 600px;
 `;
 
 const SSHFrame = styled.iframe`
   width: 100%;
-  height: 100%;
+  height: 600px;
   display: block;
 `;
 
