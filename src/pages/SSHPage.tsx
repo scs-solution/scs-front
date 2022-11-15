@@ -36,15 +36,25 @@ const SSHPage = (props: { instance?: InfraInstance }) => {
     var ifrm = document.getElementsByTagName("iframe")[0],
       iwind = ifrm.contentWindow;
 
-    (iwind as any).eval(`
-var opts = {
-  hostname: '${props.instance!.publicIp}',
-  port: '22',
-  username: 'ec2-user',
-  privatekey: '${pk}',
-};
-wssh.connect(opts);
-`);
+    iwind.postMessage(
+      JSON.stringify({
+        hostname: props.instance!.publicIp,
+        port: "22",
+        username: "ec2-user",
+        privatekey: pk,
+      }),
+      "*"
+    );
+
+    //     (iwind as any).eval(`
+    // var opts = {
+    //   hostname: '${props.instance!.publicIp}',
+    //   port: '22',
+    //   username: 'ec2-user',
+    //   privatekey: '${pk}',
+    // };
+    // wssh.connect(opts);
+    // `);
   };
 
   return (
