@@ -69,7 +69,7 @@ function Main() {
   useEffect(() => {
     async function get() {
       const infraInfo = await axios.post(
-        `http://www.rollrat.com/api/v1/infra/defail/${
+        `http://www.rollrat.com/api/v1/infra/detail/${
           getScsContextInstance().infraName
         }`
       );
