@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import NotFound from "./pages/NotFound";
 import MonitoringPage from "./pages/MonitoringPage";
 import React from "react";
+import SSHPage from "./pages/SSHPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/monitoringpage" element={<MonitoringPage />} />
+        <Route path="/sshtest" element={<SSHPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

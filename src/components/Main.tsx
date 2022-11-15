@@ -67,6 +67,7 @@ function Main() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    if (!loaded) return;
     async function get() {
       const infraInfo = await axios.get(
         `http://www.rollrat.com/api/v1/infra/detail/${
