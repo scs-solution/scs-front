@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import MonitoringPage from "./pages/MonitoringPage";
 import React from "react";
 import SSHPage from "./pages/SSHPage";
+import TempMonitor from "./pages/TempMonitor";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/monitoringpage" element={<MonitoringPage />} />
+        <Route path="/tempmonitor" element={<TempMonitor/>} />
         <Route path="/sshtest" element={<SSHPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

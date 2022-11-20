@@ -69,6 +69,12 @@ let port2 = node2.addInPort("Int");
 const link = port1.link<DefaultLinkModel>(port2);
 // link.addLabel("Hello World!");
 
+const tnode1 = new DefaultNodeModel({
+  name: "tempnode",
+  color: "rgb(255,255,0)",
+});
+tnode1.setPosition(100, 200);
+
 const model = new DiagramModel();
 model.addAll(node1, node2, link);
 engine.setModel(model);
