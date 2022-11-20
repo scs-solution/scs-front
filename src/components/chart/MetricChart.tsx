@@ -11,11 +11,6 @@ import { getScsContextInstance } from "../../context/ScsContext";
 export const options = {
   colors: ["grey", "#276419"],
   pointSize: 10,
-  animation: {
-    duration: 1000,
-    easing: "out",
-    startup: true,
-  },
   vAxis: {
     title: "y",
     viewWindow: {
