@@ -9,20 +9,19 @@ import {
 import { getScsContextInstance } from "../../context/ScsContext";
 
 export const options = {
-  colors: ["grey", "#276419"],
-  pointSize: 10,
+  //colors: ["#3333FF"],
+  pointSize: 1,
+  title : "CPU/RAM usage",
   vAxis: {
-    title: "y",
     viewWindow: {
-      max: -10,
+      max: 0,
       min: 100,
     },
   },
   hAxis: {
-    title: "x",
+    title: "time(second)",
+    titleTextStyle: {color: "#333"},
     viewWindow: {
-      /*max: 70,
-      min: -10,*/
     },
   },
   legend: { position: "none" },
@@ -32,21 +31,36 @@ export const options = {
 
 function getData() {
   return [
-    ["x", "y"],
+    ["time", "cpu"],
     ...Array.from({ length: 60 }, (_, index) => [
       index,
       Math.floor(Math.random() * 100),
     ]),
   ];
 }
+
+function getDatar() {
+  return [
+    ["time", "cpu", "ram"],
+    ...Array.from({ length: 60 }, (_, index) => [
+      index,
+      Math.floor(Math.random() * 100),
+      Math.floor(Math.random() * 100),
+    ]),
+  ];
+}
+
 function updateData(chartData: any) {
   const data = chartData;
   data.splice(1, 1);
-  /*data[data.length-1][0] = data[data.length-2][0]+1;
-    data[data.length-1][1] = Math.floor(Math.random()*100)*/
   data.push([data[data.length - 1][0] + 1, Math.floor(Math.random() * 100)]);
-  /*console.log( "first", [data[1][0], data[1][1]], "second", [data[2][0], data[2][1]],
-       "last", [data[data.length-1][0], data[data.length-1][1]], "length", data.length);*/
+  return data;
+}
+
+function updateDatar(chartData: any) {
+  const data = chartData;
+  data.splice(1, 1);
+  data.push([data[data.length - 1][0] + 1, Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)]);
   return data;
 }
 
@@ -62,13 +76,13 @@ export default function MetricChart() {
     
     return () => clearInterval(pull);
   });*/
-  const [chartData, setChartData] = useState(getData());
+  const [chartData, setChartData] = useState(getDatar());
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const updateddata = updateData(Object.assign([], chartData));
+      const updateddata = updateDatar(Object.assign([], chartData)); //deep copy
       setChartData(updateddata);
-      console.log(
+      /*console.log(
         "first",
         [chartData[1][0], chartData[1][1]],
         "second",
@@ -80,7 +94,7 @@ export default function MetricChart() {
         ],
         "length",
         chartData.length
-      );
+      );*/
     }, 1000);
     return () => {
       clearInterval(intervalId);
@@ -90,7 +104,7 @@ export default function MetricChart() {
   return (
     <>
       <Chart
-        chartType="LineChart"
+        chartType="AreaChart"
         width="100%"
         height="600px"
         data={chartData}
