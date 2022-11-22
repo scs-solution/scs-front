@@ -5,6 +5,7 @@ import DiagramPannel from "./diagram/DiagramPannel";
 import MetricChart from "./chart/MetricChart";
 import axios from "axios";
 import { getScsContextInstance } from "../context/ScsContext";
+import FlowPannel from "./diagram/FlowPannel";
 
 const Body = styled.div`
   min-height: calc(100vh - 180px);
@@ -97,7 +98,7 @@ function Main() {
             </Accordion.Header>
             <Accordion.Body>
               <DiagramWrap1>
-                <DiagramPannel />
+                <FlowPannel />
               </DiagramWrap1>
             </Accordion.Body>
           </Accordion.Item>

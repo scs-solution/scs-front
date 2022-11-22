@@ -6,6 +6,7 @@ import MonitoringPage from "./pages/MonitoringPage";
 import React from "react";
 import SSHPage from "./pages/SSHPage";
 import TempMonitor from "./pages/TempMonitor";
+import FlowTestPage from "./pages/FlowTestPage";
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/monitoringpage" element={<MonitoringPage />} />
-        <Route path="/tempmonitor" element={<TempMonitor/>} />
+        <Route path="/tempmonitor" element={<TempMonitor />} />
         <Route path="/sshtest" element={<SSHPage />} />
+        <Route path="/flowtest" element={<FlowTestPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
