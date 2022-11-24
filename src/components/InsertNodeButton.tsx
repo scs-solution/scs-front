@@ -24,11 +24,9 @@ function NewFrontendInstanceModal(props: any) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
+        <h4>Getting Started</h4>
         <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
+          ...
         </p>
       </Modal.Body>
       <Modal.Footer>
@@ -37,6 +35,70 @@ function NewFrontendInstanceModal(props: any) {
     </Modal>
   );
 }
+
+
+function NewBackendInstanceModal(props: any) {
+  const createInstance = async () => {
+    props.onHide();
+  };
+
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Create Backend Instance
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Getting Started</h4>
+        <p>
+          ...
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={createInstance}>Create</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+
+function NewDatabaseInstanceModal(props: any) {
+  const createInstance = async () => {
+    props.onHide();
+  };
+
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Create Database Instance
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Getting Started</h4>
+        <p>
+          ...
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={createInstance}>Create</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+
 
 function SSHModal(props: any) {
   const close = async () => {
@@ -65,6 +127,8 @@ function SSHModal(props: any) {
 
 function InsertNodeButton() {
   const [modalFrontendShow, setModalFrontendShow] = React.useState(false);
+  const [modalBackendShow, setModalBackendShow] = React.useState(false);
+  const [modalDatabaseShow, setModalDatabaseShow] = React.useState(false);
   const [sshModalShow, setSSHModalShow] = React.useState(false);
 
   const handleSelect = (eventKey: any) => {
@@ -72,7 +136,12 @@ function InsertNodeButton() {
       case "front":
         setModalFrontendShow(true);
         break;
-
+      case "backend":
+        setModalBackendShow(true);
+        break;
+      case "database":
+        setModalDatabaseShow(true);
+        break;
       case "ssh":
         setSSHModalShow(true);
         break;
@@ -95,6 +164,24 @@ function InsertNodeButton() {
         <NewFrontendInstanceModal
           show={modalFrontendShow}
           onHide={() => setModalFrontendShow(false)}
+        />
+      ) : (
+        <></>
+      )}
+
+      {modalBackendShow ? (
+        <NewBackendInstanceModal
+          show={modalBackendShow}
+          onHide={() => setModalBackendShow(false)}
+        />
+      ) : (
+        <></>
+      )}
+
+      {modalDatabaseShow ? (
+        <NewDatabaseInstanceModal
+          show={modalDatabaseShow}
+          onHide={() => setModalDatabaseShow(false)}
         />
       ) : (
         <></>

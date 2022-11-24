@@ -52,7 +52,7 @@ const engine = createEngine();
 
 // node 1
 const node1 = new DefaultNodeModel({
-  name: "Client",
+  name: "Instance name",
   color: "rgb(0,192,255)",
 });
 node1.setPosition(100, 100);
@@ -67,7 +67,7 @@ node2.setPosition(200, 100);
 let port2 = node2.addInPort("Int");
 
 const link = port1.link<DefaultLinkModel>(port2);
-// link.addLabel("Hello World!");
+link.addLabel("etc numbers");
 
 const tnode1 = new DefaultNodeModel({
   name: "tempnode",
