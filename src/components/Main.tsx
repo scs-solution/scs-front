@@ -6,6 +6,7 @@ import MetricChart from "./chart/MetricChart";
 import axios from "axios";
 import { getScsContextInstance } from "../context/ScsContext";
 import FlowPannel from "./diagram/FlowPannel";
+import { MonitorResDto } from "../dtos/monitor-res.dtos";
 
 const Body = styled.div`
   min-height: calc(100vh - 180px);
@@ -66,6 +67,8 @@ const MetricWrap2 = styled.div`
 
 function Main() {
   const [loaded, setLoaded] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+  const [metric, setMetric] = useState<MonitorResDto>();
 
   useEffect(() => {
     if (loaded) return;
@@ -80,6 +83,24 @@ function Main() {
       setLoaded(true);
     }
     get();
+  });
+
+  useEffect(() => {
+    setTimeout(async () => {
+      const infraInfo = await axios.get(
+        `http://www.rollrat.com/api/v1/infra/detail/${
+          getScsContextInstance().infraName
+        }`
+      );
+
+      getScsContextInstance().infraDesc = infraInfo.data;
+      setIsPending(getScsContextInstance().hasPending());
+
+      const metricInfo = await axios.post(`http://rollrat.com/api/v1/monitor`);
+      const metric = metricInfo.data as MonitorResDto;
+
+      setMetric(metric);
+    }, 1000);
   });
 
   if (!loaded) {

@@ -19,6 +19,10 @@ export class ScsContext {
   get infraDesc(): InfraDescription {
     return this._desc;
   }
+
+  hasPending(): boolean {
+    return this._desc.instances?.some((e) => e.status === "pending");
+  }
 }
 
 var _singleton: ScsContext;
