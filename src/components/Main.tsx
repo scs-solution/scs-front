@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Accordion, Badge } from "react-bootstrap";
-import DiagramPannel from "./diagram/DiagramPannel";
+import DiagramPannel from "../changed/DiagramPannel";
 import MetricChart from "./chart/MetricChart";
 import axios from "axios";
 import { getScsContextInstance } from "../context/ScsContext";

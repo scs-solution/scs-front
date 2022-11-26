@@ -11,12 +11,6 @@ const EdgeNumberWrapper = styled.div`
   color: white;
   font-size: 20px;
 `;
-
-// const onEdgeClick = (evt, id) => {
-//   evt.stopPropagation();
-//   alert(`remove ${id}`);
-// };
-
 export default function CustomEdge({
   id,
   sourceX,
@@ -47,7 +41,6 @@ export default function CustomEdge({
       clearInterval(intervalId);
     };
   });
-
   return (
     <>
       <path
@@ -63,12 +56,8 @@ export default function CustomEdge({
         x={labelX - foreignObjectSize / 2}
         y={labelY - foreignObjectSize / 2}
         className="edgebutton-foreignobject"
-        //requiredExtensions="http://www.w3.org/1999/xhtml"
       >
         <div>
-          {/* <button className="SimpleNumberEdge" onClick={(event) => onEdgeClick(event, id)}>
-            ×
-          </button> */}
           <EdgeNumberWrapper>{edgeData}</EdgeNumberWrapper>
         </div>
       </foreignObject>

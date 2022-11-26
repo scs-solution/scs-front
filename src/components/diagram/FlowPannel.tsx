@@ -17,8 +17,6 @@ import TempNode from "../custom-node-ts/TempNode";
 import TempEdge from "../custom-node-ts/TempEdge";
 import "../custom-node-ts/nodestyle.css";
 import "reactflow/dist/style.css";
-import InsertNodeButton from "../InsertNodeButton";
-import styled from "styled-components";
 
 //const initBgColor = '#1A192B';
 const connectionLineStyle = { stroke: "#fff" };
@@ -28,23 +26,13 @@ const nodeTypes = {
   Backend: TempNode,
   Database: TempNode,
 };
-
 const edgeTypes = {
   custom: TempEdge,
 };
-const initialNodes = [
-  {
-    id: "0",
-    type: "input",
-    data: { label: "Node" },
-    position: { x: 0, y: 50 },
-  },
-];
 
 const FlowPannel = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-
   const nodeColor = (node: any) => {
     //minimap color
     switch (node.type) {
@@ -136,8 +124,6 @@ const FlowPannel = () => {
         edgeTypes={edgeTypes}
         connectionLineStyle={connectionLineStyle}
         snapToGrid={true}
-        //snapGrid={snapGrid}
-        // defaultZoom={1.5}
         fitView
         attributionPosition="top-left"
       >

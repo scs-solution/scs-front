@@ -9,10 +9,10 @@ import {
 import { getScsContextInstance } from "../../context/ScsContext";
 
 export const options = {
-  //colors: ["#3333FF"],
   pointSize: 0,
   title : "CPU/RAM usage",
   vAxis: {
+    title: "%",
     viewWindow: {
       max: 0,
       min: 100,
@@ -21,13 +21,12 @@ export const options = {
   hAxis: {
     title: "time(second)",
     titleTextStyle: {color: "#333"},
-    viewWindow: {
+    viewWindow: { //live horizontal axis
     },
   },
   legend: { position: "none" },
   enableInteractivity: false,
 };
-//var chartData:any = getData();
 
 function getData() {
   return [
@@ -48,36 +47,12 @@ function updateData(chartData: any) {
 }
 
 export default function MetricChart() {
-  /*useEffect(() => {
-    const pull = setInterval(async () => {
-      const metric = await axios.post("http://www.rollrat.com/api/v1/monitor", {
-        infraName: getScsContextInstance().infraName,
-      });
-      console.log(metric);
-    }, 1000);
- 
-    
-    return () => clearInterval(pull);
-  });*/
   const [chartData, setChartData] = useState(getData());
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       const updateddata = updateData(Object.assign([], chartData)); //deep copy
       setChartData(updateddata);
-      /*console.log(
-        "first",
-        [chartData[1][0], chartData[1][1]],
-        "second",
-        [chartData[2][0], chartData[2][1]],
-        "last",
-        [
-          chartData[chartData.length - 1][0],
-          chartData[chartData.length - 1][1],
-        ],
-        "length",
-        chartData.length
-      );*/
     }, 1000);
     return () => {
       clearInterval(intervalId);

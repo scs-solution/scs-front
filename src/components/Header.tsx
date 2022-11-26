@@ -23,5 +23,4 @@ const Header = () => {
     </Navbar>
   );
 };
-//・표시 안보기 위해 ul에 li 넣음
 export default Header;

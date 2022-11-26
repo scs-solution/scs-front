@@ -4,49 +4,9 @@ import createEngine, {
   DefaultLinkModel,
   DiagramModel,
 } from "@projectstorm/react-diagrams";
-import WorkspaceWidget, { DemoButton } from "../custom-node-ts/WorkspaceWidget";
+import WorkspaceWidget, { DemoButton } from "../components/custom-node-ts/WorkspaceWidget";
 import { CanvasWidget } from "@projectstorm/react-canvas-core";
 
-// export interface BodyWidgetProps {
-//   engine: DiagramEngine;
-// }
-
-// export class BodyWidget extends React.Component<BodyWidgetProps> {
-//   render() {
-//     return (
-//       <CanvasWidget className="diagram-container" engine={this.props.engine} />
-//     );
-//   }
-// }
-
-// const engine = createEngine();
-
-// // register the two engines
-// engine.getNodeFactories().registerFactory(new TSCustomNodeFactory());
-
-// // create a diagram model
-// const model = new DiagramModel();
-
-// //####################################################
-// // now create two nodes of each type, and connect them
-
-// const node2 = new TSCustomNodeModel({ color: "rgb(0,192,255)" });
-// node2.setPosition(200, 50);
-
-// const link1 = new DefaultLinkModel();
-// link1.setTargetPort(node2.getPort("in"));
-
-// model.addAll(node2, link1);
-
-// //####################################################
-
-// // install the model into the engine
-// engine.setModel(model);
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const root = createRoot(document.querySelector("#application"));
-//   root.render(<BodyWidget engine={engine} />);
-// });
 
 const engine = createEngine();
 

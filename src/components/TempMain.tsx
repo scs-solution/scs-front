@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Accordion, Badge } from "react-bootstrap";
-import DiagramPannel from "./diagram/DiagramPannel";
 import MetricChart from "./chart/MetricChart";
 import axios from "axios";
 import { getScsContextInstance } from "../context/ScsContext";
@@ -10,24 +9,19 @@ import FlowPannel from "./diagram/FlowPannel";
 const Body = styled.div`
   min-height: calc(100vh - 180px);
 `;
-
 const MainContentLeft = styled.div`
   position: absolute;
-  /*display: flex;*/
   left: 0;
-  /*display: inline-block; /* == float: left */
   width: 65%;
-  /*height: 1230px;*/
   margin: 0 auto;
-  /*border-right: solid black 1px;*/
 `;
 
 const DiagramWrap1 = styled.div`
-  display: block; /* == float: left */
+  display: block;
   width: 100%;
   height: 700px;
   margin: 0 auto;
-  overflow: auto; //초과분 표시속성
+  overflow: auto;
   background-color: #f7f7f7;
 `;
 
@@ -43,15 +37,12 @@ const MainContentRight = styled.div`
   position: absolute;
   right: 0;
   width: 34%;
-  /*height: 1230px;*/
   margin: 0 auto;
-  /*border-radius: 64px 64px 64px 64px;*/
 `;
 
 const MetricWrap1 = styled.div`
   display: block;
   width: 100%;
-  /* height: 1080px; */
   margin: 0 auto;
   background-color: #f7f7f7;
 `;
@@ -82,18 +73,14 @@ function TempMain() {
     get();
   });
 
-  /*if (!loaded) {
-    return <></>;
-  }*/
-
   return (
     <Body>
       <MainContentLeft>
-        <Accordion defaultActiveKey={["0", "1"]} alwaysOpen>
+        <Accordion defaultActiveKey={["0"]} alwaysOpen>
           <Accordion.Item eventKey="0">
             <Accordion.Header>
               <Badge pill bg="primary">
-                Diagram 1
+                Instance Diagram
               </Badge>{" "}
             </Accordion.Header>
             <Accordion.Body>
@@ -110,7 +97,6 @@ function TempMain() {
             </Accordion.Header>
             <Accordion.Body>
               <DiagramWrap2>
-                {/*<DiagramPannel />*/}
               </DiagramWrap2>
             </Accordion.Body>
           </Accordion.Item>

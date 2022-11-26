@@ -67,11 +67,6 @@ function NewInstancePage(){
                   />
               </Col>
             </Form.Group>
-            {/* <Form.Group as={Row} className="mb-3">
-              <Col sm={{ span: 10, offset: 2 }}>
-                <Button type="submit">Create</Button>
-              </Col>
-            </Form.Group> */}
           </Form>
     )
 }

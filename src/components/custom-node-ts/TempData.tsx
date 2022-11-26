@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-
-const dataStyle = styled.div`
-  text-align: left;
-`;
 
 function TempData() {
   const [cpuData, setCpuData] = useState(0);
