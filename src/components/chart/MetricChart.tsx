@@ -10,7 +10,7 @@ import { getScsContextInstance } from "../../context/ScsContext";
 
 export const options = {
   //colors: ["#3333FF"],
-  pointSize: 1,
+  pointSize: 0,
   title : "CPU/RAM usage",
   vAxis: {
     viewWindow: {
@@ -31,16 +31,6 @@ export const options = {
 
 function getData() {
   return [
-    ["time", "cpu"],
-    ...Array.from({ length: 60 }, (_, index) => [
-      index,
-      Math.floor(Math.random() * 100),
-    ]),
-  ];
-}
-
-function getDatar() {
-  return [
     ["time", "cpu", "ram"],
     ...Array.from({ length: 60 }, (_, index) => [
       index,
@@ -51,13 +41,6 @@ function getDatar() {
 }
 
 function updateData(chartData: any) {
-  const data = chartData;
-  data.splice(1, 1);
-  data.push([data[data.length - 1][0] + 1, Math.floor(Math.random() * 100)]);
-  return data;
-}
-
-function updateDatar(chartData: any) {
   const data = chartData;
   data.splice(1, 1);
   data.push([data[data.length - 1][0] + 1, Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)]);
@@ -76,11 +59,11 @@ export default function MetricChart() {
     
     return () => clearInterval(pull);
   });*/
-  const [chartData, setChartData] = useState(getDatar());
+  const [chartData, setChartData] = useState(getData());
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const updateddata = updateDatar(Object.assign([], chartData)); //deep copy
+      const updateddata = updateData(Object.assign([], chartData)); //deep copy
       setChartData(updateddata);
       /*console.log(
         "first",

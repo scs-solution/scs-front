@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-
+const dataStyle = styled.div`
+    text-align: left;
+`
 
 function TempData()
 {
@@ -24,12 +26,16 @@ function TempData()
     
 
     return (
-        <>
-            <div>CPU : {cpuData}%</div>
-            <div>RAM : {ramData}%</div>
-            <div>DISK : {diskData}%</div>
-            <div>NET : {networkData}Kbps</div>
-        </>
+        <div>
+            <dataStyle> CPU :</dataStyle>
+            <dataStyle> {cpuData}% </dataStyle>
+            <br/>
+            <dataStyle> RAM : {ramData}% </dataStyle>
+            <br/>
+            <dataStyle> DISK : {diskData}% </dataStyle>
+            <br/>
+            <dataStyle> NET : {networkData}Kbps </dataStyle>
+        </div>
     )
 }
 

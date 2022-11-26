@@ -1,9 +1,30 @@
-.react-flow__node-instanceNode {
+.react-flow__node-Frontend {
     font-size: 12px;
-    background: #eee;
+    background: #E06F50;
     border: 1px solid #555;
     border-radius: 5px;
-    text-align: center;
+    text-align: left;
     width: 150px;
+    padding: 10px;
+  }
+
+  .react-flow__node-Backend {
+    font-size: 12px;
+    background: #7A77F7;
+    border: 1px solid #555;
+    border-radius: 5px;
+    text-align: left;
+    width: 150px;
+    padding: 10px;
+  }
+
+  .react-flow__node-Database {
+    font-size: 12px;
+    background: #FCE86C;
+    border: 1px solid #555;
+    border-radius: 5px;
+    text-align: left;
+    width: 150px;
+    padding: 10px;
   }
   

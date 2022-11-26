@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactFlow, {
-  MiniMap,
   Controls,
   Background,
-  useNodesState,
-  useEdgesState,
   addEdge,
+  Connection,
+  Edge,
+  EdgeTypes,
+  Node,
+  MiniMap,
+  useEdgesState,
+  useNodesState,
+  ReactFlowProvider,
 } from "reactflow";
 import TempNode from "../custom-node-ts/TempNode";
 import '../custom-node-ts/nodestyle.css';
@@ -15,15 +20,39 @@ import styled from 'styled-components';
 
 //const initBgColor = '#1A192B';
 const connectionLineStyle = { stroke: '#fff' };
-const snapGrid = [20, 20];
+//const snapGrid = [20, 20]; //props list
 const nodeTypes = {
-  instanceNode : TempNode,
+  Frontend : TempNode,
+  Backend : TempNode,
+  Database : TempNode,
 };
+const initialNodes = [
+  {
+    id: '0',
+    type: 'input',
+    data: { label: 'Node' },
+    position: { x: 0, y: 50 },
+  },
+];
+
+
 
 const FlowPannel = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  //const [bgColor, setBgColor] = useState(initBgColor);
+  const [nodeId, setNodeId] = useState(0);
+  //const [nodeColor, setnodeColor] = useState('white');
+
+  const nodeColor = (node) => {
+    switch (node.type) {
+      case 'Frontend':
+        return '#E06F50';
+      case 'Backend':
+        return '#7A77F7';
+      case 'Database':
+        return '#FCE86C';
+    }
+  };
 
   useEffect(() => {
     const onChange = (event) => {
@@ -33,15 +62,18 @@ const FlowPannel = () => {
             return node;
           }
 
-          const color = event.target.value;
+          const label = event.target.value;
 
           //setBgColor(color);
+          if(label==='Backend'){
+          
+          }
 
           return {
             ...node,
             data: {
               ...node.data,
-              color,
+              label,
             },
           };
         })
@@ -51,33 +83,29 @@ const FlowPannel = () => {
     setNodes([
       {
         id: '1',
-        type: /*'input'*/'instanceNode',
-        data: { label: 'Frontend' },
+        type: 'Frontend',
+        data: { label: 'Frontend node' },
         position: { x: 0, y: 50 },
-        style: { border: '1px solid #777', padding: 10 },
         sourcePosition: 'right',
       },
       {
         id: '2',
-        type: 'instanceNode',
-        data: { label: 'Backend' /*onChange: onChange, color: initBgColor*/ },
-        style: { border: '1px solid #777', padding: 10 },
+        type: 'Backend',
+        data: { label: 'Backend node', /*onChange: onChange*/ },
         position: { x: 300, y: 50 },
       },
       {
         id: '3',
-        type: /*'output'*/'instanceNode',
-        data: { label: 'Database' },
+        type: 'Database',
+        data: { label: 'Database node' },
         position: { x: 650, y: 0},
-        style: { border: '1px solid #777', padding: 10 },
         targetPosition: 'left',
       },
       {
         id: '4',
-        type: /*'output'*/'instanceNode',
-        data: { label: 'Database' },
+        type: 'Database',
+        data: { label: 'Database node' },
         position: { x: 650, y: 200 },
-        style: { border: '1px solid #777', padding: 10 },
         targetPosition: 'left',
       },
     ]);
@@ -114,71 +142,50 @@ const FlowPannel = () => {
       setEdges((eds) => addEdge({ ...params, animated: true, style: { stroke: '#fff' } }, eds)),
     []
   );
+
+  const tempAddFrontend = ()=>{
+  }
+
+  const tempAddBacktend = ()=>{
+  }
+
+  const tempAddDatabase = () =>{
+  }
+
   return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      style={{background : '#303337'}}
-      nodeTypes={nodeTypes}
-      connectionLineStyle={connectionLineStyle}
-      snapToGrid={true}
-      snapGrid={snapGrid}
-      defaultZoom={1.5}
-      fitView
-      attributionPosition="bottom-left"
-    >
+    <ReactFlowProvider>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        style={{background : '#303337'}}
+        nodeTypes={nodeTypes}
+        connectionLineStyle={connectionLineStyle}
+        snapToGrid={true}
+        //snapGrid={snapGrid}
+        defaultZoom={1.5}
+        fitView
+        attributionPosition="bottom-left"
+      >
+      
       <MiniMap
-        /*nodeStrokeColor={(n) => {
-          if (n.type === 'input') return '#0041d0';
-          if (n.type === 'selectorNode') return bgColor;
-          if (n.type === 'output') return '#ff0072';
-        }}
-        nodeColor={(n) => {
-          if (n.type === 'selectorNode') return bgColor;
-          return '#fff';
-        }}*/
-      />
-      <Controls />
-    </ReactFlow>
+        nodeColor={nodeColor}
+        // nodeStrokeColor={(n) => {
+        //   if (n.type === 'input') return '#0041d0';
+        //   if (n.type === 'selectorNode') return bgColor;
+        //   if (n.type === 'output') return '#ff0072';
+        // }}
+        // nodeColor={(n) => {
+        //   if (n.type === 'selectorNode') return bgColor;
+        //   return '#fff';
+        //   }}
+        />
+        <Controls />
+      </ReactFlow>
+    </ReactFlowProvider>
   );
 };
 
 export default FlowPannel;
-
-
-
-/*const initialNodes = [
-  { id: "1", position: { x: 0, y: 0 }, data: { label: "Instance name" } },
-  { id: "2", position: { x: 0, y: 100 }, data: { label: "2" } },
-];
-
-const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
-
-function FlowPannel() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-  const onConnect = useCallback(
-    (params: any) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
-  );
-
-  return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-    >
-      <MiniMap />
-      <Controls />
-      <Background />
-    </ReactFlow>
-  );
-}
-
-export default FlowPannel;*/

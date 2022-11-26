@@ -15,7 +15,6 @@ export default memo(({ data, isConnectable }) => {
       <div>
         <strong>{data.label}</strong>
       </div>
-      {/*<input className="nodrag" type="color" onChange={data.onChange} defaultValue={data.color} />*/}
       <TempData></TempData>
       <Handle
         type="source"

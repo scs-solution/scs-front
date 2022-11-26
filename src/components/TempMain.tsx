@@ -110,7 +110,7 @@ function TempMain() {
             </Accordion.Header>
             <Accordion.Body>
               <DiagramWrap2>
-                <DiagramPannel />
+                {/*<DiagramPannel />*/}
               </DiagramWrap2>
             </Accordion.Body>
           </Accordion.Item>
