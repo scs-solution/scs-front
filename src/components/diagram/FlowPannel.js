@@ -139,7 +139,7 @@ const FlowPannel = () => {
         //snapGrid={snapGrid}
         defaultZoom={1.5}
         fitView
-        attributionPosition="bottom-left"
+        attributionPosition="top-left"
       >
       
       <MiniMap

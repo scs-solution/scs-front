@@ -11,7 +11,8 @@ function NewInstancePage(){
                   <Form.Control type="text" placeholder="Insert your instance name"/>
               </Col>
             </Form.Group>
-            <Form.Group as={Row} className="mb-3">
+
+            <Form.Group as={Row} className="mb-3" controlId="formInstanceType">
               <Form.Label as="legend" column sm={2}>
                 Types
               </Form.Label>
@@ -26,7 +27,7 @@ function NewInstancePage(){
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row} className="mb-3">
+            <Form.Group as={Row} className="mb-3" controlId="formInstanceSpec">
               <Form.Label as="legend" column sm={2}>
                 Spec
               </Form.Label>
@@ -41,14 +42,27 @@ function NewInstancePage(){
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row} className="mb-3" controlId="formInstanceSpec">
+            <Form.Group as={Row} className="mb-3" controlId="formInitialScript">
               <Form.Label column sm={2}>
-                Description
+                Initial Script
               </Form.Label>
               <Col sm={10}>
                   <Form.Control
                     as="textarea"
-                    placeholder="Insert your description"
+                    placeholder="Insert your initial script"
+                    style={{ height: '100px' }}
+                  />
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} className="mb-3" controlId="formRunScript">
+              <Form.Label column sm={2}>
+                Run Script
+              </Form.Label>
+              <Col sm={10}>
+                  <Form.Control
+                    as="textarea"
+                    placeholder="Insert your run script"
                     style={{ height: '100px' }}
                   />
               </Col>
