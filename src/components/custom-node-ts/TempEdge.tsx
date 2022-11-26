@@ -1,16 +1,16 @@
-import React,{useState,useEffect} from 'react';
-import { getBezierPath } from 'reactflow';
-import styled from 'styled-components';
-import './nodestyle.css';
+import React, { useState, useEffect } from "react";
+import { getBezierPath } from "reactflow";
+import styled from "styled-components";
+import "./nodestyle.css";
 
 const foreignObjectSize = 40;
 
 const EdgeNumberWrapper = styled.div`
-    width: 10px;
-    height: 10px;
-    color: white;
-    font-size: 20px;
-`
+  width: 10px;
+  height: 10px;
+  color: white;
+  font-size: 20px;
+`;
 
 // const onEdgeClick = (evt, id) => {
 //   evt.stopPropagation();
@@ -27,7 +27,7 @@ export default function CustomEdge({
   targetPosition,
   style = {},
   markerEnd,
-}) {
+}: any) {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
@@ -38,15 +38,15 @@ export default function CustomEdge({
   });
 
   const [edgeData, setEdgeData] = useState(0);
-    
-    useEffect (()=>{
-        const intervalId = setInterval(() => {
-            setEdgeData(Math.floor(Math.random() * 10));
-        },1000)
-        return () => {
-            clearInterval(intervalId);
-            };
-    })
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setEdgeData(Math.floor(Math.random() * 10));
+    }, 1000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  });
 
   return (
     <>
@@ -69,9 +69,7 @@ export default function CustomEdge({
           {/* <button className="SimpleNumberEdge" onClick={(event) => onEdgeClick(event, id)}>
             ×
           </button> */}
-          <EdgeNumberWrapper>
-            {edgeData}
-          </EdgeNumberWrapper>
+          <EdgeNumberWrapper>{edgeData}</EdgeNumberWrapper>
         </div>
       </foreignObject>
     </>

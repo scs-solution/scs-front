@@ -66,6 +66,7 @@ const MetricWrap2 = styled.div`
 
 function Main() {
   const [loaded, setLoaded] = useState(false);
+  const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
     if (loaded) return;
@@ -80,6 +81,19 @@ function Main() {
       setLoaded(true);
     }
     get();
+  });
+
+  useEffect(() => {
+    setTimeout(async () => {
+      const infraInfo = await axios.get(
+        `http://www.rollrat.com/api/v1/infra/detail/${
+          getScsContextInstance().infraName
+        }`
+      );
+
+      getScsContextInstance().infraDesc = infraInfo.data;
+      setIsPending(getScsContextInstance().hasPending());
+    }, 1000);
   });
 
   if (!loaded) {
