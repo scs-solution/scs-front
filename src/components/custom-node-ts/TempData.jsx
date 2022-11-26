@@ -27,8 +27,7 @@ function TempData()
 
     return (
         <div>
-            <dataStyle> CPU :</dataStyle>
-            <dataStyle> {cpuData}% </dataStyle>
+            <dataStyle> CPU : {cpuData}% </dataStyle>
             <br/>
             <dataStyle> RAM : {ramData}% </dataStyle>
             <br/>

@@ -1,6 +1,6 @@
 .react-flow__node-Frontend {
     font-size: 12px;
-    background: #E06F50;
+    background: #F5A59D;
     border: 1px solid #555;
     border-radius: 5px;
     text-align: left;
@@ -10,7 +10,7 @@
 
   .react-flow__node-Backend {
     font-size: 12px;
-    background: #7A77F7;
+    background: #9FA6FF;
     border: 1px solid #555;
     border-radius: 5px;
     text-align: left;
@@ -27,4 +27,28 @@
     width: 150px;
     padding: 10px;
   }
+
+  .edgebutton {
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 1;
+  }
   
+  .edgebutton:hover {
+    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.08);
+  }
+  
+  .edgebutton-foreignobject div {
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+  }

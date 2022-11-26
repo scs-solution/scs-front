@@ -13,6 +13,7 @@ import ReactFlow, {
   ReactFlowProvider,
 } from "reactflow";
 import TempNode from "../custom-node-ts/TempNode";
+import TempEdge from "../custom-node-ts/TempEdge"
 import '../custom-node-ts/nodestyle.css';
 import "reactflow/dist/style.css";
 import InsertNodeButton from '../InsertNodeButton';
@@ -25,6 +26,10 @@ const nodeTypes = {
   Frontend : TempNode,
   Backend : TempNode,
   Database : TempNode,
+};
+
+const edgeTypes = {
+  custom: TempEdge,
 };
 const initialNodes = [
   {
@@ -40,45 +45,19 @@ const initialNodes = [
 const FlowPannel = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [nodeId, setNodeId] = useState(0);
-  //const [nodeColor, setnodeColor] = useState('white');
 
-  const nodeColor = (node) => {
+  const nodeColor = (node) => { //minimap color
     switch (node.type) {
       case 'Frontend':
-        return '#E06F50';
+        return '#F5A59D';
       case 'Backend':
-        return '#7A77F7';
+        return '#9FA6FF';
       case 'Database':
         return '#FCE86C';
     }
   };
 
   useEffect(() => {
-    const onChange = (event) => {
-      setNodes((nds) =>
-        nds.map((node) => {
-          if (node.id !== '2') {
-            return node;
-          }
-
-          const label = event.target.value;
-
-          //setBgColor(color);
-          if(label==='Backend'){
-          
-          }
-
-          return {
-            ...node,
-            data: {
-              ...node.data,
-              label,
-            },
-          };
-        })
-      );
-    };
 
     setNodes([
       {
@@ -91,7 +70,7 @@ const FlowPannel = () => {
       {
         id: '2',
         type: 'Backend',
-        data: { label: 'Backend node', /*onChange: onChange*/ },
+        data: { label: 'Backend node' },
         position: { x: 300, y: 50 },
       },
       {
@@ -113,26 +92,27 @@ const FlowPannel = () => {
     setEdges([
       {
         id: 'e1-2',
+        type: 'custom',
         source: '1',
         target: '2',
         animated: true,
-        style: { stroke: '#fff' },
       },
       {
         id: 'e2a-3',
+        type: 'custom',
         source: '2',
         target: '3',
         sourceHandle: 'a',
         animated: true,
-        style: { stroke: '#fff' },
       },
       {
         id: 'e2b-4',
+        type: 'custom',
         source: '2',
         target: '4',
         sourceHandle: 'b',
         animated: true,
-        style: { stroke: '#fff' },
+
       },
     ]);
   }, []);
@@ -142,15 +122,6 @@ const FlowPannel = () => {
       setEdges((eds) => addEdge({ ...params, animated: true, style: { stroke: '#fff' } }, eds)),
     []
   );
-
-  const tempAddFrontend = ()=>{
-  }
-
-  const tempAddBacktend = ()=>{
-  }
-
-  const tempAddDatabase = () =>{
-  }
 
   return (
     <ReactFlowProvider>
@@ -162,6 +133,7 @@ const FlowPannel = () => {
         onConnect={onConnect}
         style={{background : '#303337'}}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         connectionLineStyle={connectionLineStyle}
         snapToGrid={true}
         //snapGrid={snapGrid}
@@ -172,17 +144,9 @@ const FlowPannel = () => {
       
       <MiniMap
         nodeColor={nodeColor}
-        // nodeStrokeColor={(n) => {
-        //   if (n.type === 'input') return '#0041d0';
-        //   if (n.type === 'selectorNode') return bgColor;
-        //   if (n.type === 'output') return '#ff0072';
-        // }}
-        // nodeColor={(n) => {
-        //   if (n.type === 'selectorNode') return bgColor;
-        //   return '#fff';
-        //   }}
         />
         <Controls />
+        <Background />
       </ReactFlow>
     </ReactFlowProvider>
   );
