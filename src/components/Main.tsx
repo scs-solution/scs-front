@@ -83,7 +83,9 @@ function Main() {
       setLoaded(true);
     }
     get();
+  });
 
+  useEffect(() => {
     const timer = setInterval(async () => {
       const infraInfo = await axios.get(
         `http://www.rollrat.com/api/v1/infra/detail/${
