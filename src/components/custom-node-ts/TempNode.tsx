@@ -22,7 +22,7 @@ const ButtonWrapper = styled.div`
 `;
 const NodeBody = styled.div`
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: center;
 `;
 
