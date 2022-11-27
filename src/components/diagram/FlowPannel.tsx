@@ -43,6 +43,12 @@ const FlowPannel = () => {
   };
 
   useEffect(() => {
+    if (
+      getScsContextInstance().infraDesc.instances === undefined ||
+      getScsContextInstance().infraDesc.instances === null
+    )
+      return;
+
     setNodes([
       // {
       //   id: "1",
@@ -71,7 +77,7 @@ const FlowPannel = () => {
       //   position: { x: 650, y: 200 },
       //   targetPosition: Position.Left,
       // },
-      ...getScsContextInstance().infraDesc.instances?.map((e, i) => {
+      ...getScsContextInstance().infraDesc.instances.map((e, i) => {
         return {
           type: "Frontend",
           id: i.toString(),
