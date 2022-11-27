@@ -96,9 +96,12 @@ function Main() {
       getScsContextInstance().infraDesc = infraInfo.data;
       setIsPending(getScsContextInstance().hasPending());
 
-      const metricInfo = await axios.post(`http://rollrat.com/api/v1/monitor`, {
-        infraName: getScsContextInstance().infraName,
-      });
+      const metricInfo = await axios.post(
+        `http://www.rollrat.com/api/v1/monitor`,
+        {
+          infraName: getScsContextInstance().infraName,
+        }
+      );
       const metric = metricInfo.data as MonitorResDto;
 
       setMetric(metric);
