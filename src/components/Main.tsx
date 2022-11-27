@@ -17,7 +17,7 @@ const MainContentLeft = styled.div`
   /*display: flex;*/
   left: 0;
   /*display: inline-block; /* == float: left */
-  width: 65%;
+  width: 100%;
   /*height: 1230px;*/
   margin: 0 auto;
   /*border-right: solid black 1px;*/
@@ -161,7 +161,7 @@ function Main() {
           </Accordion>
         </MainContentLeft>
 
-        <MainContentRight>
+        {/* <MainContentRight>
           <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="0">
               <Accordion.Header>
@@ -186,7 +186,7 @@ function Main() {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-        </MainContentRight>
+        </MainContentRight> */}
       </Body>
     </div>
   );

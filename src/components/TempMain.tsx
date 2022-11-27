@@ -13,7 +13,7 @@ const Body = styled.div`
 const MainContentLeft = styled.div`
   position: absolute;
   left: 0;
-  width: 65%;
+  width: 100%;
   margin: 0 auto;
 `;
 
@@ -123,7 +123,7 @@ function TempMain() {
         </Accordion>
       </MainContentLeft>
 
-      <MainContentRight>
+      {/* <MainContentRight>
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="0">
             <Accordion.Header>
@@ -148,7 +148,7 @@ function TempMain() {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-      </MainContentRight>
+      </MainContentRight> */}
     </Body>
   );
 }
