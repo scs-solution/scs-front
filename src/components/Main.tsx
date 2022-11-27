@@ -74,9 +74,7 @@ function Main() {
     if (loaded) return;
     async function get() {
       const infraInfo = await axios.get(
-        `http://www.rollrat.com/api/v1/infra/detail/${
-          getScsContextInstance().infraName
-        }`
+        `/api/v1/infra/detail/${getScsContextInstance().infraName}`
       );
 
       getScsContextInstance().infraDesc = infraInfo.data;
@@ -88,20 +86,15 @@ function Main() {
   useEffect(() => {
     const timer = setInterval(async () => {
       const infraInfo = await axios.get(
-        `http://www.rollrat.com/api/v1/infra/detail/${
-          getScsContextInstance().infraName
-        }`
+        `/api/v1/infra/detail/${getScsContextInstance().infraName}`
       );
 
       getScsContextInstance().infraDesc = infraInfo.data;
       setIsPending(getScsContextInstance().hasPending());
 
-      const metricInfo = await axios.post(
-        `http://www.rollrat.com/api/v1/monitor`,
-        {
-          infraName: getScsContextInstance().infraName,
-        }
-      );
+      const metricInfo = await axios.post(`/api/v1/monitor`, {
+        infraName: getScsContextInstance().infraName,
+      });
       const metric = metricInfo.data as MonitorResDto;
 
       setMetric(metric);
