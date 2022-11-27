@@ -89,11 +89,14 @@ const FlowPannel = () => {
 
     const timer = setInterval(() => {
       const edges = [];
+      const contmap: any = {};
 
       for (const metric of getScsContextInstance().metric.instances) {
         const outbound = getScsContextInstance().drivenOutbound(metric.name);
 
         for (const instance in outbound) {
+          if (contmap[`${instance}-${metric.name}`] !== undefined) continue;
+          contmap[`${metric.name}-${instance}`] = 0;
           edges.push({
             id: `${metric.name}-${instance}`,
             type: "custom",
