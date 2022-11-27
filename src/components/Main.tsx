@@ -86,7 +86,7 @@ function Main() {
   });
 
   useEffect(() => {
-    setTimeout(async () => {
+    setInterval(async () => {
       const infraInfo = await axios.get(
         `http://www.rollrat.com/api/v1/infra/detail/${
           getScsContextInstance().infraName
