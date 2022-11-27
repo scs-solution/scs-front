@@ -1,12 +1,26 @@
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { getScsContextInstance } from "../context/ScsContext";
 
 const NewInstanceModal = (props: any) => {
   const { register, handleSubmit, reset } = useForm();
 
-  const onCreateClick = function (data: any) {
-    console.log(data);
+  const onCreateClick = async function (data: any) {
+    const result = await axios.post(`/api/v1/instance`, {
+      infraName: getScsContextInstance().infraName,
+      name: data.instanceName,
+      instanceType: data.instanceType,
+      instanceSpec: data.instanceSpec,
+      initialDesc: {
+        initialScript: data.initialScript,
+        runScript: data.runScript,
+      },
+    });
+
+    console.log(result.data);
+
     reset();
     props.onHide();
   };
@@ -47,8 +61,9 @@ const NewInstanceModal = (props: any) => {
                 {...register("instanceType")}
                 aria-label="Type select example"
               >
-                <option>Open this select menu</option>
-                <option value="normal">Normal</option>
+                <option value="normal" selected>
+                  Normal
+                </option>
                 <option value="spot">Spot</option>
                 <option value="mysql">MySQL</option>
                 <option value="redis">Redis</option>
@@ -65,11 +80,12 @@ const NewInstanceModal = (props: any) => {
                 {...register("instanceSpec")}
                 aria-label="Spec select example"
               >
-                <option>Open this select menu</option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+                <option value="t2.micro" selected>
+                  t2.micro
+                </option>
+                <option value="t2.medium">t2.medium</option>
+                <option value="t2.small">t2.small</option>
+                <option value="t2.medium">t2.medium</option>
               </Form.Select>
             </Col>
           </Form.Group>
