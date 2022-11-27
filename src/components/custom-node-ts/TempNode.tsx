@@ -1,8 +1,10 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { Handle, Position } from "reactflow";
 import TempData from "./TempData";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
+import SSHModal from "../SSHModal";
+import { getScsContextInstance } from "../../context/ScsContext";
 
 const LabelWrapper = styled.div`
   text-align: left;
@@ -25,6 +27,9 @@ const NodeBody = styled.div`
 `;
 
 export default memo(({ data, isConnectable }: any) => {
+  const [infoModal, setInfoModal] = useState(false);
+  const [sshModal, setSSHModal] = useState(false);
+
   return (
     <>
       <Handle
@@ -42,7 +47,7 @@ export default memo(({ data, isConnectable }: any) => {
           <TempData></TempData>
         </DataWrapper>
         <ButtonWrapper className="d-grid gap-2">
-          <Button variant="dark" size="sm">
+          <Button variant="dark" size="sm" onClick={() => setSSHModal(true)}>
             SSH
           </Button>{" "}
           <Button variant="dark" size="sm">
@@ -63,6 +68,12 @@ export default memo(({ data, isConnectable }: any) => {
         id="b"
         style={{ bottom: 10, top: "auto", background: "#555" }}
         isConnectable={isConnectable}
+      />
+
+      <SSHModal
+        show={sshModal}
+        onHide={() => setSSHModal(false)}
+        instance={getScsContextInstance().infraDesc.instances![0]}
       />
     </>
   );

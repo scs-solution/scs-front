@@ -1,12 +1,8 @@
-import { NavItem, Button, Modal, Nav, Form, NavDropdown, Row, Col, FloatingLabel } from "react-bootstrap";
-import { getScsContextInstance } from "../context/ScsContext";
-import SSHPage from "../pages/SSHPage";
-import React, { useState } from 'react';
+import { Button, Modal } from "react-bootstrap";
+import React from "react";
 import NewInstancePage from "../pages/NewInstancePage";
 
-
-
-const NewInstanceModal = (props:any) => {
+const NewInstanceModal = (props: any) => {
   return (
     <Modal
       {...props}
@@ -20,15 +16,14 @@ const NewInstanceModal = (props:any) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <NewInstancePage></NewInstancePage>
+        <NewInstancePage></NewInstancePage>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Create</Button>
       </Modal.Footer>
     </Modal>
   );
-}
-
+};
 
 function InsertNodeButton() {
   const [modalShow, setModalShow] = React.useState(false);
@@ -42,8 +37,7 @@ function InsertNodeButton() {
       <NewInstanceModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-      >
-      </NewInstanceModal>
+      ></NewInstanceModal>
     </>
   );
 }

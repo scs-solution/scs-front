@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+
 import Main from "../components/Main";
 import styled from "styled-components";
 
@@ -9,12 +9,7 @@ const Layout = styled.div`
 `;
 
 const MonitoringPage = () => {
-  return (
-    <Layout>
-      <Header />
-      <Main></Main>
-    </Layout>
-  );
+  return <Main></Main>;
 };
 
 export default MonitoringPage;
