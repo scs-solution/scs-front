@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../components/Header";
 import TempMain from "../components/TempMain";
 import styled from "styled-components";
 
@@ -11,7 +10,6 @@ const Layout = styled.div`
 const TempMonitor = () => {
   return (
     <Layout>
-      <Header />
       <TempMain></TempMain>
     </Layout>
   );
