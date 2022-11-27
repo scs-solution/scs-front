@@ -81,7 +81,7 @@ const FlowPannel = () => {
         return {
           type: "Frontend",
           id: e.name,
-          position: { x: 0, y: 0 },
+          position: { x: i * 300, y: 0 },
           data: { label: e.name, instance: e },
         };
       }),
