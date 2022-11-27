@@ -84,7 +84,7 @@ function Main() {
     }
     get();
 
-    setInterval(async () => {
+    const timer = setInterval(async () => {
       const infraInfo = await axios.get(
         `http://www.rollrat.com/api/v1/infra/detail/${
           getScsContextInstance().infraName
@@ -101,6 +101,8 @@ function Main() {
 
       setMetric(metric);
     }, 1000);
+
+    return () => clearInterval(timer);
   });
 
   if (!loaded) {
