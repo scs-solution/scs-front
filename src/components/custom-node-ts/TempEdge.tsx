@@ -21,6 +21,7 @@ export default function CustomEdge({
   targetPosition,
   style = {},
   markerEnd,
+  data,
 }: any) {
   const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
@@ -31,16 +32,17 @@ export default function CustomEdge({
     targetPosition,
   });
 
-  const [edgeData, setEdgeData] = useState(0);
+  // const [edgeData, setEdgeData] = useState(0);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setEdgeData(Math.floor(Math.random() * 10));
-    }, 1000);
-    return () => {
-      clearInterval(intervalId);
-    };
-  });
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setEdgeData(Math.floor(Math.random() * 10));
+  //   }, 1000);
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // });
+
   return (
     <>
       <path
@@ -58,7 +60,7 @@ export default function CustomEdge({
         className="edgebutton-foreignobject"
       >
         <div>
-          <EdgeNumberWrapper>{edgeData}</EdgeNumberWrapper>
+          <EdgeNumberWrapper>{data}</EdgeNumberWrapper>
         </div>
       </foreignObject>
     </>

@@ -1,4 +1,4 @@
-import { InfraDescription } from "../dtos/infra-desc.dtos";
+import { InfraDescription, InfraInstance } from "../dtos/infra-desc.dtos";
 import {
   MonitorResDto,
   MonitorResInstanceMetric,
@@ -32,6 +32,32 @@ export class ScsContext {
 
   get metric(): MonitorResDto {
     return this._metric;
+  }
+
+  drivenOutbound(name: string): any {
+    const metric = this.getMetricFromInstanceName(name);
+    const iptable: any = {};
+    const outbound = (metric.pingpong as any).outbound;
+
+    for (const metric of this._metric.instances) {
+      if (metric.name === name) continue;
+      iptable[metric.privateIp] = metric.name;
+      iptable[metric.publicIp] = metric.name;
+    }
+
+    const result: any = {};
+
+    for (const ip in outbound) {
+      if (ip in iptable) {
+        if (!(iptable[ip] in result)) {
+          result[iptable[ip]] = outbound[ip];
+        } else {
+          result[iptable[ip]] += outbound[ip];
+        }
+      }
+    }
+
+    return result;
   }
 
   getMetricFromInstanceName(name: string): MonitorResInstanceMetric {

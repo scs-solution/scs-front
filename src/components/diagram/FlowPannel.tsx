@@ -80,12 +80,35 @@ const FlowPannel = () => {
       ...getScsContextInstance().infraDesc.instances.map((e, i) => {
         return {
           type: "Frontend",
-          id: i.toString(),
+          id: e.name,
           position: { x: 0, y: 0 },
           data: { label: e.name, instance: e },
         };
       }),
     ]);
+
+    const timer = setInterval(() => {
+      const edges = [];
+
+      for (const metric of getScsContextInstance().metric.instances) {
+        const outbound = getScsContextInstance().drivenOutbound(metric.name);
+
+        for (const instance in outbound) {
+          edges.push({
+            id: `${metric.name}-${instance}`,
+            type: "custom",
+            source: metric.name,
+            target: instance,
+            animated: true,
+            data: outbound[instance],
+          });
+        }
+      }
+
+      setEdges(edges);
+    }, 1000);
+
+    return () => clearInterval(timer);
 
     // setEdges([
     //   {
