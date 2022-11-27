@@ -14,6 +14,7 @@ const NewInstanceModal = (props: any) => {
       instanceType: data.instanceType,
       instanceSpec: data.instanceSpec,
       initialDesc: {
+        imageName: "",
         initialScript: data.initialScript,
         runScript: data.runScript,
       },
