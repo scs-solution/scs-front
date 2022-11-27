@@ -44,41 +44,41 @@ const FlowPannel = () => {
 
   useEffect(() => {
     setNodes([
-      {
-        id: "1",
-        type: "Frontend",
-        data: { label: "Frontend node" },
-        position: { x: 0, y: 50 },
-        sourcePosition: Position.Right,
-      },
-      {
-        id: "2",
-        type: "Backend",
-        data: { label: "Backend node" },
-        position: { x: 300, y: 50 },
-      },
-      {
-        id: "3",
-        type: "Database",
-        data: { label: "Database node" },
-        position: { x: 650, y: 0 },
-        targetPosition: Position.Left,
-      },
-      {
-        id: "4",
-        type: "Database",
-        data: { label: "Database node" },
-        position: { x: 650, y: 200 },
-        targetPosition: Position.Left,
-      },
-      // ...getScsContextInstance().infraDesc.instances.map((e, i) => {
-      //   return {
-      //     type: "Frontend",
-      //     id: i.toString(),
-      //     position: { x: 0, y: 0 },
-      //     data: { label: e.name, instance: e },
-      //   };
-      // }),
+      // {
+      //   id: "1",
+      //   type: "Frontend",
+      //   data: { label: "Frontend node" },
+      //   position: { x: 0, y: 50 },
+      //   sourcePosition: Position.Right,
+      // },
+      // {
+      //   id: "2",
+      //   type: "Backend",
+      //   data: { label: "Backend node" },
+      //   position: { x: 300, y: 50 },
+      // },
+      // {
+      //   id: "3",
+      //   type: "Database",
+      //   data: { label: "Database node" },
+      //   position: { x: 650, y: 0 },
+      //   targetPosition: Position.Left,
+      // },
+      // {
+      //   id: "4",
+      //   type: "Database",
+      //   data: { label: "Database node" },
+      //   position: { x: 650, y: 200 },
+      //   targetPosition: Position.Left,
+      // },
+      ...getScsContextInstance().infraDesc.instances.map((e, i) => {
+        return {
+          type: "Frontend",
+          id: i.toString(),
+          position: { x: 0, y: 0 },
+          data: { label: e.name, instance: e },
+        };
+      }),
     ]);
 
     // setEdges([
