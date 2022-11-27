@@ -97,6 +97,8 @@ function Main() {
       });
       const metric = metricInfo.data as MonitorResDto;
 
+      getScsContextInstance().metric = metric;
+
       setMetric(metric);
     }, 1000);
 

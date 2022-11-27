@@ -1,8 +1,14 @@
 import { InfraDescription } from "../dtos/infra-desc.dtos";
+import {
+  MonitorResDto,
+  MonitorResInstanceMetric,
+} from "../dtos/monitor-res.dtos";
 
 export class ScsContext {
   private _infraName: string;
   private _desc: InfraDescription;
+
+  private _metric: MonitorResDto;
 
   set infraName(name: string) {
     this._infraName = name;
@@ -18,6 +24,21 @@ export class ScsContext {
 
   get infraDesc(): InfraDescription {
     return this._desc;
+  }
+
+  set metric(metric: MonitorResDto) {
+    this._metric = metric;
+  }
+
+  get metric(): MonitorResDto {
+    return this._metric;
+  }
+
+  getMetricFromInstanceName(name: string): MonitorResInstanceMetric {
+    for (const metric of this._metric.instances) {
+      if (metric.name === name) return metric;
+    }
+    return null;
   }
 
   hasPending(): boolean {

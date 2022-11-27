@@ -44,7 +44,7 @@ export default memo(({ data, isConnectable }: any) => {
       </LabelWrapper>
       <NodeBody>
         <DataWrapper>
-          <TempData></TempData>
+          <TempData data={data}></TempData>
         </DataWrapper>
         <ButtonWrapper className="d-grid gap-2">
           <Button variant="dark" size="sm" onClick={() => setSSHModal(true)}>
