@@ -19,10 +19,10 @@ function TempData({ data }: any) {
         (data.instance as InfraInstance).name
       );
 
-      setCpuData(metric.cpu);
+      setCpuData(Math.floor(metric.cpu * 1000) / 10);
       setRamData(metric.hotMemory);
       setStatuss((data.instance as InfraInstance).status);
-      setNetworkData(metric.rxBps);
+      setNetworkData(Math.floor(metric.rxBps / 102.4) / 10);
     }, 1000);
     return () => {
       clearInterval(intervalId);
