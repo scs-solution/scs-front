@@ -26,7 +26,7 @@ const NodeBody = styled.div`
   justify-content: center;
 `;
 
-export default memo(({ data, isConnectable }: any) => {
+export default memo(({ data, isConnectable, instance }: any) => {
   const [infoModal, setInfoModal] = useState(false);
   const [sshModal, setSSHModal] = useState(false);
 

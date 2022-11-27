@@ -13,6 +13,7 @@ import TempNode from "../custom-node-ts/TempNode";
 import TempEdge from "../custom-node-ts/TempEdge";
 import "../custom-node-ts/nodestyle.css";
 import "reactflow/dist/style.css";
+import { getScsContextInstance } from "../../context/ScsContext";
 
 //const initBgColor = '#1A192B';
 const connectionLineStyle = { stroke: "#fff" };
@@ -43,60 +44,68 @@ const FlowPannel = () => {
 
   useEffect(() => {
     setNodes([
-      {
-        id: "1",
-        type: "Frontend",
-        data: { label: "Frontend node" },
-        position: { x: 0, y: 50 },
-        sourcePosition: Position.Right,
-      },
-      {
-        id: "2",
-        type: "Backend",
-        data: { label: "Backend node" },
-        position: { x: 300, y: 50 },
-      },
-      {
-        id: "3",
-        type: "Database",
-        data: { label: "Database node" },
-        position: { x: 650, y: 0 },
-        targetPosition: Position.Left,
-      },
-      {
-        id: "4",
-        type: "Database",
-        data: { label: "Database node" },
-        position: { x: 650, y: 200 },
-        targetPosition: Position.Left,
-      },
+      // {
+      //   id: "1",
+      //   type: "Frontend",
+      //   data: { label: "Frontend node" },
+      //   position: { x: 0, y: 50 },
+      //   sourcePosition: Position.Right,
+      // },
+      // {
+      //   id: "2",
+      //   type: "Backend",
+      //   data: { label: "Backend node" },
+      //   position: { x: 300, y: 50 },
+      // },
+      // {
+      //   id: "3",
+      //   type: "Database",
+      //   data: { label: "Database node" },
+      //   position: { x: 650, y: 0 },
+      //   targetPosition: Position.Left,
+      // },
+      // {
+      //   id: "4",
+      //   type: "Database",
+      //   data: { label: "Database node" },
+      //   position: { x: 650, y: 200 },
+      //   targetPosition: Position.Left,
+      // },
+      ...getScsContextInstance().infraDesc.instances.map((e, i) => {
+        return {
+          type: "Frontend",
+          id: i.toString(),
+          position: { x: 0, y: 0 },
+          data: { label: e.name, instance: e },
+        };
+      }),
     ]);
 
-    setEdges([
-      {
-        id: "e1-2",
-        type: "custom",
-        source: "1",
-        target: "2",
-        animated: true,
-      },
-      {
-        id: "e2a-3",
-        type: "custom",
-        source: "2",
-        target: "3",
-        sourceHandle: "a",
-        animated: true,
-      },
-      {
-        id: "e2b-4",
-        type: "custom",
-        source: "2",
-        target: "4",
-        sourceHandle: "b",
-        animated: true,
-      },
-    ]);
+    // setEdges([
+    //   {
+    //     id: "e1-2",
+    //     type: "custom",
+    //     source: "1",
+    //     target: "2",
+    //     animated: true,
+    //   },
+    //   {
+    //     id: "e2a-3",
+    //     type: "custom",
+    //     source: "2",
+    //     target: "3",
+    //     sourceHandle: "a",
+    //     animated: true,
+    //   },
+    //   {
+    //     id: "e2b-4",
+    //     type: "custom",
+    //     source: "2",
+    //     target: "4",
+    //     sourceHandle: "b",
+    //     animated: true,
+    //   },
+    // ]);
   }, []);
 
   const onConnect = useCallback(
