@@ -37,6 +37,10 @@ function TempData({ data }: any) {
     <div>
       STATUS : {statuss}
       <br />
+      PUBLIC IP: {(data.instance as InfraInstance).publicIp}
+      <br />
+      PRIVATE IP: {(data.instance as InfraInstance).privateIp}
+      <br />
       CPU : {cpuData}%
       <br />
       RAM : {ramData}
