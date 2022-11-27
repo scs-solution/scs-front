@@ -71,7 +71,7 @@ const FlowPannel = () => {
       //   position: { x: 650, y: 200 },
       //   targetPosition: Position.Left,
       // },
-      ...getScsContextInstance().infraDesc.instances.map((e, i) => {
+      ...getScsContextInstance().infraDesc.instances?.map((e, i) => {
         return {
           type: "Frontend",
           id: i.toString(),
