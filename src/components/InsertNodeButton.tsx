@@ -19,6 +19,10 @@ const NewInstanceModal = (props: any) => {
       },
     });
 
+    if (result.status !== 200) {
+      alert(result.data);
+    }
+
     console.log(result.data);
 
     reset();
