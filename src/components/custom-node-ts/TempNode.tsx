@@ -7,6 +7,7 @@ import SSHModal from "../SSHModal";
 import { getScsContextInstance } from "../../context/ScsContext";
 import axios from "axios";
 import { InfraInstance } from "../../dtos/infra-desc.dtos";
+import InfoModal from "../InfoModal";
 
 const LabelWrapper = styled.div`
   text-align: left;
@@ -89,6 +90,11 @@ export default memo(({ data, isConnectable }: any) => {
       <SSHModal
         show={sshModal}
         onHide={() => setSSHModal(false)}
+        instance={data.instance}
+      />
+      <InfoModal
+        show={infoModal}
+        onHide={() => setInfoModal(false)}
         instance={data.instance}
       />
     </>

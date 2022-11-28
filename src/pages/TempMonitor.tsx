@@ -1,6 +1,7 @@
 import React from "react";
 import TempMain from "../components/TempMain";
 import styled from "styled-components";
+import InfoModal from "../components/InfoModal";
 
 const Layout = styled.div`
   /*padding-top: 80px;*/
@@ -10,6 +11,7 @@ const Layout = styled.div`
 const TempMonitor = () => {
   return (
     <Layout>
+      <InfoModal show={true} instance={{ name: "asdf" }} />
       <TempMain></TempMain>
     </Layout>
   );
