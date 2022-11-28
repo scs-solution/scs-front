@@ -15,6 +15,8 @@ function TempData({ data }: any) {
       // setDiskData(Math.floor(Math.random() * 100));
       // setNetworkData(Math.floor(Math.random() * 1000));
 
+      setStatuss((data.instance as InfraInstance).status);
+
       const metric = getScsContextInstance().getMetricFromInstanceName(
         (data.instance as InfraInstance).name
       );
@@ -25,7 +27,6 @@ function TempData({ data }: any) {
           ((metric.ramTotal / 100) * metric.memoryCapacity) / 1024 / 1024
         )}MB/${Math.floor(metric.memoryCapacity / 1024 / 1024)}MB`
       );
-      setStatuss((data.instance as InfraInstance).status);
       setNetworkData(Math.floor(metric.txBps / 102.4) / 10);
     }, 1000);
     return () => {
