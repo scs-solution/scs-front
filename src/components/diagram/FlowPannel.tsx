@@ -51,16 +51,17 @@ const FlowPannel = () => {
       )
         return;
 
-      setNodes([
-        ...getScsContextInstance().infraDesc.instances.map((e, i) => {
-          return {
-            type: "Frontend",
-            id: e.name,
-            position: { x: i * 300, y: 0 },
-            data: { label: e.name, instance: e },
-          };
-        }),
-      ]);
+      if (getScsContextInstance().checkChange())
+        setNodes([
+          ...getScsContextInstance().infraDesc.instances.map((e, i) => {
+            return {
+              type: "Frontend",
+              id: e.name,
+              position: { x: i * 300, y: 0 },
+              data: { label: e.name, instance: e },
+            };
+          }),
+        ]);
 
       const edges = [];
       const contmap: any = {};

@@ -10,6 +10,8 @@ export class ScsContext {
 
   private _metric: MonitorResDto;
 
+  private _change: boolean = true;
+
   set infraName(name: string) {
     this._infraName = name;
   }
@@ -19,6 +21,11 @@ export class ScsContext {
   }
 
   set infraDesc(desc: InfraDescription) {
+    if (
+      this._desc === undefined ||
+      JSON.stringify(this._desc) !== JSON.stringify(desc)
+    )
+      this._change = true;
     this._desc = desc;
   }
 
@@ -32,6 +39,12 @@ export class ScsContext {
 
   get metric(): MonitorResDto {
     return this._metric;
+  }
+
+  checkChange(): boolean {
+    const result = this._change;
+    this._change = false;
+    return result;
   }
 
   drivenOutbound(name: string): any {
