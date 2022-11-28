@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Button } from "react-bootstrap";
 import SSHModal from "../SSHModal";
 import { getScsContextInstance } from "../../context/ScsContext";
+import axios from "axios";
 
 const LabelWrapper = styled.div`
   text-align: left;
@@ -30,6 +31,12 @@ export default memo(({ data, isConnectable }: any) => {
   const [infoModal, setInfoModal] = useState(false);
   const [sshModal, setSSHModal] = useState(false);
 
+  const removeInstance = async () => {
+    await axios.delete(
+      `/api/v1/instance/${getScsContextInstance().infraName}/${data.label}`
+    );
+  };
+
   return (
     <>
       <Handle
@@ -52,6 +59,9 @@ export default memo(({ data, isConnectable }: any) => {
           </Button>{" "}
           <Button variant="dark" size="sm">
             Info
+          </Button>
+          <Button variant="dark" size="sm" onClick={() => removeInstance()}>
+            Remove
           </Button>
         </ButtonWrapper>
       </NodeBody>
