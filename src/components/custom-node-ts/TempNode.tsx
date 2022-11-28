@@ -59,7 +59,7 @@ export default memo(({ data, isConnectable }: any) => {
           <Button variant="dark" size="sm" onClick={() => setSSHModal(true)}>
             SSH
           </Button>{" "}
-          <Button variant="dark" size="sm">
+          <Button variant="dark" size="sm" onClick={() => setInfoModal(true)}>
             Info
           </Button>
           <Button
