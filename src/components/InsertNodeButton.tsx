@@ -66,10 +66,10 @@ const NewInstanceModal = (props: any) => {
                 {...register("instanceType")}
                 aria-label="Type select example"
               >
-                <option value="normal" selected>
-                  Normal
+                <option value="spot" selected>
+                  Spot
                 </option>
-                <option value="spot">Spot</option>
+                <option value="normal">Normal</option>
                 <option value="mysql">MySQL</option>
                 <option value="redis">Redis</option>
               </Form.Select>
