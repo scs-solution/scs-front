@@ -131,12 +131,16 @@ const NewInstanceModal = (props: any) => {
   );
 };
 
-function InsertNodeButton() {
+function InsertNodeButton({ enabled }: any) {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      <Button
+        variant="primary"
+        onClick={() => setModalShow(true)}
+        disabled={!enabled}
+      >
         New Instance
       </Button>
 

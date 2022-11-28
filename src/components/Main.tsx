@@ -130,7 +130,7 @@ function Main() {
             />
             {" Simple Cloud System"}
           </Navbar.Brand>
-          <InsertNodeButton />
+          <InsertNodeButton enabled={!isPending} />
         </Container>
       </Navbar>
       <Body>
