@@ -24,7 +24,7 @@ function TempData({ data }: any) {
       setCpuData(Math.floor(metric.cpu * 1000) / 10);
       setRamData(
         `${Math.floor(
-          ((metric.ramTotal / 100) * metric.memoryCapacity) / 1024 / 1024
+          ((1 - metric.ramTotal / 100) * metric.memoryCapacity) / 1024 / 1024
         )}MB/${Math.floor(metric.memoryCapacity / 1024 / 1024)}MB`
       );
       setNetworkData(Math.floor(metric.txBps / 102.4) / 10);
